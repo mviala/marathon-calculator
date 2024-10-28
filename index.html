@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Marathon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculateur de Durée de Marathon</h1>
+        
+        <label for="speed">Vitesse :</label>
+        <input type="number" id="speed" placeholder="Entrez votre vitesse" step="0.1">
+        
+        <label for="unit">Unité :</label>
+        <select id="unit">
+            <option value="min/km">min/km</option>
+            <option value="km/h">km/h</option>
+        </select>
+        
+        <button onclick="calculateTime()">Calculer</button>
+        
+        <p id="result">Durée estimée : --:--</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
