@@ -10,18 +10,35 @@
     <div class="container">
         <h1>Calculateur de Durée de Marathon</h1>
         
-        <label for="speed">Vitesse :</label>
-        <input type="number" id="speed" placeholder="Entrez votre vitesse" step="0.1">
-        
+        <!-- Choix de l'unité -->
         <label for="unit">Unité :</label>
-        <select id="unit">
+        <select id="unit" onchange="toggleInputFields()">
             <option value="min/km">min/km</option>
             <option value="km/h">km/h</option>
         </select>
         
-        <button onclick="calculateTime()">Calculer</button>
+        <!-- Champs pour min/km (minutes et secondes) -->
+        <div id="minPerKmFields">
+            <label for="minutes">Minutes :</label>
+            <input type="number" id="minutes" placeholder="Minutes" step="1" min="0" oninput="updateKmH()">
+            
+            <label for="seconds">Secondes :</label>
+            <input type="number" id="seconds" placeholder="Secondes" step="1" min="0" max="59" oninput="updateKmH()">
+            
+            <p id="kmhResult">Équivalent en km/h : -- km/h</p>
+        </div>
         
-        <p id="result">Durée estimée : --:--</p>
+        <!-- Champ pour km/h -->
+        <div id="kmHField" style="display: none;">
+            <label for="kmh">Vitesse en km/h :</label>
+            <input type="number" id="kmh" placeholder="Entrez votre vitesse en km/h" step="0.1" oninput="updateMinPerKm()">
+            
+            <p id="minPerKmResult">Équivalent en min/km : --:--</p>
+        </div>
+
+        <!-- Résultat pour la durée du marathon -->
+        <button onclick="calculateMarathonTime()">Calculer</button>
+        <p id="marathonTimeResult">Durée estimée pour le marathon : --:--</p>
     </div>
 
     <script src="script.js"></script>
